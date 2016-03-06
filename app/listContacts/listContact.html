@@ -1,0 +1,19 @@
+
+    <div class="container">
+        <div class="media" ng-repeat="contact in contacts">
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img class="media-object" width="90" height="90" src="http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"> {{contact.name}}</h4>
+                {{contact.address}}
+                <div class="info">
+                    <a href="#/contacts/{{contact._id}}/edit">✔ EDIT</a>
+                    <a ng-click="deleteItem(contact._id);">✖ DELETE</a>
+                </div>
+            </div>
+
+        </div>
+
