@@ -3,9 +3,9 @@ export default ['$stateProvider', ($stateProvider) => {
     $stateProvider
         .state(
             {
-                name: 'AddContact',
-                url: '/contacts/add',
-                component: 'addContact'
+                name: 'Contacts',
+                url: '/contacts',
+                component: 'listContacts'
             }
         );
 }];

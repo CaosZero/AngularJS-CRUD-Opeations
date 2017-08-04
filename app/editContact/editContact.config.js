@@ -1,7 +1,16 @@
-export default ['$routeProvider', ($routeProvider) => {
+export default ['$stateProvider', ($stateProvider) => {
     'use strict'
-    $routeProvider.when('/contacts/:id/edit', {
-        controller: 'EditContactsCtrl',
-        templateUrl: 'editContact/editContact.html'
-    });
+    $stateProvider
+        .state(
+            {
+                name: 'EditContact',
+                url: '/contacts/:id/edit',
+                component: 'editContact',
+                resolve: {
+                    id: ['$transition$', function ($transition$) {
+                        return $transition$.params().id;
+                    }]
+                }
+            }
+        );
 }];

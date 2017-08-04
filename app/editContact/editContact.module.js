@@ -1,4 +1,4 @@
-import {Config} from 'editContact.config';
+import Config from './editContact.config';
 import EditContactComponent from './editContact.component';
 
 export default angular.module('myApp.editContact', [])

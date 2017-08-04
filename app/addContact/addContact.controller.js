@@ -10,7 +10,7 @@ export default class AddContactsController {
     }
 
     addContact() {
-        this.ContactService.add(this.newContact);
+        this.ContactService.addContact(this.newContact);
         this.$location.path('/');
     }
 }

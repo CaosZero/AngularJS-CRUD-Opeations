@@ -3,7 +3,10 @@ import EditContactTemplate from './editContact.html';
 
 let editContactComponent = {
     controller: EditContactController,
-    template: EditContactTemplate
+    template: EditContactTemplate,
+    bindings: {
+        id: '<'
+    }
 };
 
 export default editContactComponent;

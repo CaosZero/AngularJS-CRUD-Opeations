@@ -1,25 +1,42 @@
-<form style="padding-left: 4%" class="col-md-8  form-horizontal" role="form">
+<form style="padding-left: 4%" class="col-md-8 form-horizontal" role="form">
+
     <div class="form-group">
         <label class="control-label" for="name">Name:</label>
         <div class="">
-            <input type="text" class="form-control" id="name" ng-model='newContact.name' placeholder="Enter name">
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   ng-model='$ctrl.newContact.name' placeholder="Enter name">
         </div>
     </div>
+
     <div class="form-group">
         <label class="control-label" for="Address">Address:</label>
         <div class="">
-            <input type="text" class="form-control" id="Address" ng-model="newContact.address"
+            <input type="email"
+                   class="form-control"
+                   id="Address"
+                   ng-model="$ctrl.newContact.address"
                    placeholder="Enter Address">
         </div>
     </div>
+
     <div class="form-group">
         <label class="control-label" for="phone">Phone:</label>
         <div class="">
-            <input type="phone" class="form-control" id="phone" ng-model="newContact.phone" placeholder="Enter phone">
+            <input type="phone"
+                   class="form-control"
+                   id="phone"
+                   ng-model="$ctrl.newContact.phone"
+                   placeholder="Enter phone">
         </div>
     </div>
+
     <div class="form-group">
-        <button type="button" ng-click="addNewContact();" class="btn center-block btn-warning">Add Contact</button>
+        <button type="button"
+                ng-click="$ctrl.addContact();"
+                class="btn center-block btn-warning">Add Contact
+        </button>
     </div>
 </form>
 

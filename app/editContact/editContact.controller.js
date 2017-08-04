@@ -1,17 +1,12 @@
-/**
- * Created by Ruslan on 06/03/2016.
- */
-
 export default class EditContactController {
-    constructor(ContactService, $routeParams, $location, $filter) {
+    constructor(ContactService, $location, $filter) {
         this.ContactService = ContactService;
-        this.$routeParams = $routeParams;
         this.$location = $location;
         this.$filter = $filter;
     }
 
     $onInit() {
-        this.contactID = this.$routeParams.id;
+        this.contactID = this.id;
         this.contacts = this.ContactService.getContacts();
         this.currentContact = this.$filter('filter')(this.contacts, {_id: this.contactID})[0];
     }
@@ -22,4 +17,4 @@ export default class EditContactController {
     }
 }
 
-EditContactController.$inject = ['ContactService', '$routeParams', '$location', '$filter'];
+EditContactController.$inject = ['ContactService', '$location', '$filter'];
