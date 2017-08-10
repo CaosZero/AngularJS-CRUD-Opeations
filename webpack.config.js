@@ -8,14 +8,12 @@ const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './app/app.bootstrap.js',
-        vendor: [
-            'angular', 'angular-ui-router'
-        ]
+        app: './public/app.bootstrap.js',
+        vendor: ['angular', 'angular-ui-router', 'jQuery']
     },
     output: {
-        path: path.resolve(__dirname, './app/dist'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, './public/dist'),
+        publicPath: 'public/dist/',
         filename: '[name]_.js'
     },
 
@@ -67,5 +65,12 @@ module.exports = {
             }
         ]
     },
-    plugins: []
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Tether: 'tether'
+        })
+    ]
 }
