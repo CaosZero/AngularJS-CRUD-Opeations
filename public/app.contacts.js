@@ -6,6 +6,7 @@ import AddContactModule from './addContact/addContact.module';
 import EditContactModule from './editContact/editContact.module';
 import ListContactsModule from './listContacts/listContact.module';
 import ServiceContact from './serviceContacts/serviceContacts.module';
+import AppContactsStyle from './app.css';
 
 export default angular.module(
     'myApp', [
