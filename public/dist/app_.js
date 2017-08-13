@@ -109,19 +109,25 @@ var _serviceContacts = __webpack_require__(78);
 
 var _serviceContacts2 = _interopRequireDefault(_serviceContacts);
 
-var _app = __webpack_require__(80);
+var _header = __webpack_require__(80);
+
+var _header2 = _interopRequireDefault(_header);
+
+var _app = __webpack_require__(82);
 
 var _app2 = _interopRequireDefault(_app);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = angular.module('myApp', ['ui.router', 'myApp.serviceContacts', 'myApp.listContacts', 'myApp.editContact', 'myApp.addContact']).config(['$locationProvider', '$stateProvider', function ($locationProvider, $stateProvider) {
+/**
+ * Created by Ruslan on 06/03/2016.
+ */
+
+exports.default = angular.module('myApp', ['ui.router', 'myApp.serviceContacts', 'myApp.header', 'myApp.listContacts', 'myApp.editContact', 'myApp.addContact']).config(['$locationProvider', '$stateProvider', function ($locationProvider, $stateProvider) {
     'use strict';
 
     $locationProvider.html5Mode(true);
-}]); /**
-      * Created by Ruslan on 06/03/2016.
-      */
+}]);
 
 /***/ }),
 /* 60 */
@@ -446,7 +452,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var ListContacts = {
     controller: _listContact2.default,
-    template: _listContactComponent2.default
+    templateUrl: 'listContacts/listContact.component.html'
 };
 
 exports.default = ListContacts;
@@ -496,7 +502,7 @@ exports.default = ListContactController;
 /* 74 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-repeat=\"currentContact in $ctrl.contacts\"> <contact-item contact=currentContact delete-item=$ctrl.deleteItem(currentContact)></contact-item> </div> ";
+module.exports = "<contact-item ng-repeat=\"currentContact in $ctrl.contacts\" contact=currentContact delete-item=$ctrl.deleteItem(currentContact)> </contact-item> ";
 
 /***/ }),
 /* 75 */
@@ -520,7 +526,7 @@ var _contactItem2 = _interopRequireDefault(_contactItem);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var contactItem = {
-    template: _contactItemTemplate2.default,
+    templateUrl: 'listContacts/contactItem/contactItem.template.html',
     bindings: {
         contact: '<',
         deleteItem: '&'
@@ -534,7 +540,7 @@ exports.default = contactItem;
 /* 76 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=media> <div class=\"media-left media-middle\"> <a href=#> <img class=media-object width=90 height=90 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=...> </a> </div> <div class=media-body> <h4 class=media-heading> {{$ctrl.contact.name}}</h4> {{$ctrl.contact.address}} <div class=info> <a ui-sref=\"EditContact({id: $ctrl.contact._id})\">✔ EDIT</a> <a ng-click=$ctrl.deleteItem($ctrl.contact);>✖ DELETE</a> </div> </div> </div>";
+module.exports = "<div class=media style=padding:10px> <img class=\"d-flex align-self-start mr-3\" width=90 height=90 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=\"Generic placeholder image\"> <div class=media-body> <h4 class=media-heading> {{$ctrl.contact.name}}</h4> {{$ctrl.contact.address}} <div class=info> <a ui-sref=\"EditContact({id: $ctrl.contact._id})\">✔ EDIT</a> <a ng-click=$ctrl.deleteItem($ctrl.contact);>✖ DELETE</a> </div> </div> </div>";
 
 /***/ }),
 /* 77 */
@@ -660,13 +666,48 @@ exports.default = ContactService;
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _header = __webpack_require__(81);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = angular.module('myApp.header', []).component('appHeader', _header2.default);
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var AppHeader = {
+    templateUrl: 'header/header.component.html'
+};
+
+exports.default = AppHeader;
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(81);
+var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(83)(content, {});
+var update = __webpack_require__(85)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -683,10 +724,10 @@ if(false) {
 }
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(82)();
+exports = module.exports = __webpack_require__(84)();
 // imports
 
 
@@ -697,7 +738,7 @@ exports.push([module.i, ".container {\r\n\r\n    margin-top: 5em !important;\r\n
 
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports) {
 
 /*
@@ -753,7 +794,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports) {
 
 /*
