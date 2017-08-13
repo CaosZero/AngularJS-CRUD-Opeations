@@ -1,44 +1,39 @@
-const webpack = require('webpack');
-const path = require('path');
-
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
-
+const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
     entry: {
-        app: './public/app.bootstrap.js',
-        vendor: ['angular', 'angular-ui-router', 'jQuery']
+        app: "./public/app.main.ts",
+        vendor: ["angular", "@uirouter/angular-hybrid", "jquery", "reflect-metadata", "zone.js"]
     },
     output: {
-        path: path.resolve(__dirname, './public/dist'),
-        publicPath: 'public/dist/',
-        filename: '[name]_.js'
+        path: path.resolve(__dirname, "./public/dist"),
+        publicPath: "public/dist/",
+        filename: "[name]_.js"
     },
-
+    resolve: {
+        // Add `.ts` and `.tsx` as a resolvable extension.
+        extensions: ['.ts', '.tsx', '.js']
+    },
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ["style-loader", "css-loader"]
             },
             {
-                test: /\.s[ac]ss$/,
-                use: ExtractTextPlugin.extract({
-                    use: ['css-loader', 'sass-loader'],
-                    fallback: 'style-loader'
-                })
+                test: /\.tsx?$/,
+                loader: ["ts-loader"]
             },
             {
                 test: /\.js/,
                 exclude: /node_modules/,
-                loader: ['babel-loader']
+                loader: ["babel-loader"]
             },
             {
                 test: /\.html$/,
                 use: [{
-                    loader: 'html-loader',
+                    loader: "html-loader",
                     options: {
                         removeComments: true,
                         minimize: true
@@ -48,15 +43,15 @@ module.exports = {
             {
                 test: /\.(gif|png|jpe?g|svg)$/i,
                 loaders: [
-                    'file-loader',
+                    "file-loader",
                     {
-                        loader: 'image-webpack-loader',
+                        loader: "image-webpack-loader",
                         query: {
                             progressive: true,
                             optimizationLevel: 7,
                             interlaced: false,
                             pngquant: {
-                                quality: '65-90',
+                                quality: "65-90",
                                 speed: 4
                             }
                         }
@@ -67,10 +62,10 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            Tether: 'tether'
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            Tether: "tether"
         })
     ]
 }

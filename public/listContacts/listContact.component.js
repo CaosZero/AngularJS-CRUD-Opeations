@@ -4,7 +4,7 @@ import ListContactTemplate from './listContact.component.html';
 
 let ListContacts = {
     controller: ListContactController,
-    template: ListContactTemplate
+    templateUrl: 'listContacts/listContact.component.html'
 };
 
 export default ListContacts;
