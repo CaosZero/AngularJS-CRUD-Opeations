@@ -1,9 +1,8 @@
 {
-  "name": "angular-seed",
+  "name": "angular-crud",
   "private": true,
-  "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "version": "1.0.0",
+  "repository": "https://github.com/CaosZero/Angularjs.git",
   "license": "MIT",
   "devDependencies": {
     "http-server": "^0.6.1",
@@ -28,13 +27,14 @@
     "style-loader": "^0.13.1"
   },
   "scripts": {
-    "prestart": "npm install",
     "build": "webpack",
     "start": "http-server -a localhost -p 8000 -c-1",
     "serve": "http-server -a localhost -p 8000 -c-1"
   },
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.5",
     "angular": "^1.6.5",
-    "@uirouter/angularjs": "^1.0.5"
+    "bootstrap": "^4.0.0-alpha.6",
+    "jquery": "^3.2.1"
   }
 }

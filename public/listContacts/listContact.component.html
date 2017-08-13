@@ -1,0 +1,4 @@
+<div ng-repeat="currentContact in $ctrl.contacts">
+    <contact-item contact="currentContact"
+                  delete-item="$ctrl.deleteItem(currentContact)"></contact-item>
+</div>

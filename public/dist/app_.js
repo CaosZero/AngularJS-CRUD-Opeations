@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/dist/";
+/******/ 	__webpack_require__.p = "public/dist/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 58);
@@ -117,7 +117,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * Created by Ruslan on 06/03/2016.
  */
 
-exports.default = angular.module('myApp', ['ui.router', 'myApp.serviceContacts', 'myApp.listContacts', 'myApp.editContact', 'myApp.addContact']).config(['$locationProvider', function ($locationProvider) {
+exports.default = angular.module('myApp', ['ui.router', 'myApp.serviceContacts', 'myApp.listContacts', 'myApp.editContact', 'myApp.addContact']).config(['$locationProvider', '$stateProvider', function ($locationProvider, $stateProvider) {
+    'use strict';
+
     $locationProvider.html5Mode(true);
 }]);
 
@@ -365,7 +367,7 @@ var EditContactController = function () {
         key: 'saveUpdatedContact',
         value: function saveUpdatedContact() {
             this.ContactService.updateContact(this.currentContact);
-            this.$location.path('/');
+            this.$location.path('/contacts');
         }
     }]);
 
@@ -509,7 +511,7 @@ exports.default = ListContactController;
 /***/ 74:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=container> <div ng-repeat=\"currentContact in $ctrl.contacts\"> <contact-item contact=currentContact delete-item=\"$ctrl.deleteItem({'_id': currentContact.id})\"></contact-item> </div> </div>";
+module.exports = "<div ng-repeat=\"currentContact in $ctrl.contacts\"> <contact-item contact=currentContact delete-item=$ctrl.deleteItem(currentContact)></contact-item> </div> ";
 
 /***/ }),
 
@@ -549,7 +551,7 @@ exports.default = contactItem;
 /***/ 76:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=media> <div class=\"media-left media-middle\"> <a href=#> <img class=media-object width=90 height=90 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=...> </a> </div> <div class=media-body> <h4 class=media-heading> {{$ctrl.contact.name}}</h4> {{$ctrl.contact.address}} <div class=info> <a ui-sref=\"EditContact({contactId: $ctrl.contact._id})\">✔ EDIT</a> <a ng-click=$ctrl.deleteItem($ctrl.contact._id);>✖ DELETE</a> </div> </div> </div>";
+module.exports = "<div class=media> <div class=\"media-left media-middle\"> <a href=#> <img class=media-object width=90 height=90 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=...> </a> </div> <div class=media-body> <h4 class=media-heading> {{$ctrl.contact.name}}</h4> {{$ctrl.contact.address}} <div class=info> <a ui-sref=\"EditContact({id: $ctrl.contact._id})\">✔ EDIT</a> <a ng-click=$ctrl.deleteItem($ctrl.contact);>✖ DELETE</a> </div> </div> </div>";
 
 /***/ }),
 
@@ -573,9 +575,9 @@ var ContactItemController = function () {
     }
 
     _createClass(ContactItemController, [{
-        key: 'deleteContact',
-        value: function deleteContact(_passedId) {
-            this.deleteItem({ '_id': _passedId.id });
+        key: "deleteContact",
+        value: function deleteContact(_passedContact) {
+            this.deleteItem(_passedContact);
         }
     }]);
 
@@ -627,7 +629,6 @@ var ContactService = function () {
         _classCallCheck(this, ContactService);
 
         this.contacts = [{ _id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933' }, { _id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933' }, { _id: 3, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 103', phone: '557188339933' }, { _id: 4, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 104', phone: '557188339933' }, { _id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933' }, { _id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933' }];
-        console.log(this.contacts);
     }
 
     _createClass(ContactService, [{
