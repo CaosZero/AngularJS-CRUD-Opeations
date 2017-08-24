@@ -99749,7 +99749,7 @@ var NgAdapterInjector = (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(68);
 var platform_browser_dynamic_1 = __webpack_require__(35);
-var ng4Module_1 = __webpack_require__(69);
+var ng4Module_1 = __webpack_require__(92);
 platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(ng4Module_1.AppModule);
 
 
@@ -99764,11 +99764,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Created by Ruslan on 06/03/2016.
  */
 var angular = __webpack_require__(18);
+__webpack_require__(69);
+__webpack_require__(74);
+__webpack_require__(79);
+__webpack_require__(87);
+__webpack_require__(89);
 angular.module("myApp", [
     "ui.router",
     "ui.router.upgrade",
-    "myApp.serviceContacts",
     "myApp.header",
+    "myApp.serviceContacts",
     "myApp.listContacts",
     "myApp.editContact",
     "myApp.addContact"
@@ -99786,6 +99791,583 @@ angular.module("myApp", [
 
 "use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _addContact = __webpack_require__(70);
+
+var _addContact2 = _interopRequireDefault(_addContact);
+
+var _addContact3 = __webpack_require__(71);
+
+var _addContact4 = _interopRequireDefault(_addContact3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = angular.module('myApp.addContact', []).config(_addContact2.default).component('addContact', _addContact4.default);
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = ['$stateProvider', function ($stateProvider) {
+    'use strict';
+
+    $stateProvider.state({
+        name: 'AddContact',
+        url: '/contacts/add',
+        component: 'addContact'
+    });
+}];
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _addContact = __webpack_require__(72);
+
+var _addContact2 = _interopRequireDefault(_addContact);
+
+var _addContactComponent = __webpack_require__(73);
+
+var _addContactComponent2 = _interopRequireDefault(_addContactComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var addContactComponent = {
+    controller: _addContact2.default,
+    template: _addContactComponent2.default
+};
+
+exports.default = addContactComponent;
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var AddContactsController = function () {
+    function AddContactsController(ContactService, $location) {
+        _classCallCheck(this, AddContactsController);
+
+        this.ContactService = ContactService;
+        this.$location = $location;
+    }
+
+    _createClass(AddContactsController, [{
+        key: '$onInit',
+        value: function $onInit() {
+            this.newContact = {};
+        }
+    }, {
+        key: 'addContact',
+        value: function addContact() {
+            this.ContactService.addContact(this.newContact);
+            this.$location.path('/');
+        }
+    }]);
+
+    return AddContactsController;
+}();
+
+exports.default = AddContactsController;
+
+
+AddContactsController.$inject = ['ContactService', '$location'];
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
+
+module.exports = "<form style=padding-left:4% class=\"col-md-8 form-horizontal\" role=form> <div class=form-group> <label class=control-label for=name>Name:</label> <div class=\"\"> <input type=text class=form-control id=name ng-model=$ctrl.newContact.name placeholder=\"Enter name\"> </div> </div> <div class=form-group> <label class=control-label for=Address>Address:</label> <div class=\"\"> <input type=email class=form-control id=Address ng-model=$ctrl.newContact.address placeholder=\"Enter Address\"> </div> </div> <div class=form-group> <label class=control-label for=phone>Phone:</label> <div class=\"\"> <input type=phone class=form-control id=phone ng-model=$ctrl.newContact.phone placeholder=\"Enter phone\"> </div> </div> <div class=form-group> <button type=button ng-click=$ctrl.addContact(); class=\"btn center-block btn-warning\">Add Contact </button> </div> </form> <div class=col-md-4> <img class=\"img-circle center-block\" width=220 height=220 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=...> </div> ";
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _editContact = __webpack_require__(75);
+
+var _editContact2 = _interopRequireDefault(_editContact);
+
+var _editContact3 = __webpack_require__(76);
+
+var _editContact4 = _interopRequireDefault(_editContact3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = angular.module('myApp.editContact', []).config(_editContact2.default).component('editContact', _editContact4.default);
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = ['$stateProvider', function ($stateProvider) {
+    'use strict';
+
+    $stateProvider.state({
+        name: 'EditContact',
+        url: '/contacts/:id/edit',
+        component: 'editContact',
+        resolve: {
+            id: ['$transition$', function ($transition$) {
+                return $transition$.params().id;
+            }]
+        }
+    });
+}];
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _editContact = __webpack_require__(77);
+
+var _editContact2 = _interopRequireDefault(_editContact);
+
+var _editContact3 = __webpack_require__(78);
+
+var _editContact4 = _interopRequireDefault(_editContact3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var editContactComponent = {
+    controller: _editContact2.default,
+    template: _editContact4.default,
+    bindings: {
+        id: '<'
+    }
+};
+
+exports.default = editContactComponent;
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var EditContactController = function () {
+    function EditContactController(ContactService, $location, $filter) {
+        _classCallCheck(this, EditContactController);
+
+        this.ContactService = ContactService;
+        this.$location = $location;
+        this.$filter = $filter;
+    }
+
+    _createClass(EditContactController, [{
+        key: '$onInit',
+        value: function $onInit() {
+            this.contactID = this.id;
+            this.contacts = this.ContactService.getContacts();
+            this.currentContact = this.$filter('filter')(this.contacts, { _id: this.contactID })[0];
+        }
+    }, {
+        key: 'saveUpdatedContact',
+        value: function saveUpdatedContact() {
+            this.ContactService.updateContact(this.currentContact);
+            this.$location.path('/contacts');
+        }
+    }]);
+
+    return EditContactController;
+}();
+
+exports.default = EditContactController;
+
+
+EditContactController.$inject = ['ContactService', '$location', '$filter'];
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports) {
+
+module.exports = "<form style=padding-left:4% class=\"col-md-8 form-horizontal\" role=form> <div class=form-group> <label class=control-label for=name>Name:</label> <div class=\"\"> <input type=text class=form-control id=name ng-model=$ctrl.currentContact.name placeholder=\"Enter name\"> </div> </div> <div class=form-group> <label class=control-label for=Address>Address:</label> <div class=\"\"> <input type=text class=form-control id=Address ng-model=$ctrl.currentContact.address placeholder=\"Enter Address\"> </div> </div> <div class=form-group> <label class=control-label for=phone>Phone:</label> <div class=\"\"> <input type=phone class=form-control id=phone ng-model=$ctrl.currentContact.phone placeholder=\"Enter phone\"> </div> </div> <div class=form-group> <button type=button ng-click=$ctrl.saveUpdatedContact(); class=\"btn center-block btn-warning\">Save </button> </div> </form> <div class=col-md-4> <img class=\"img-circle center-block\" width=220 height=220 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=...> </div> ";
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _listContact = __webpack_require__(80);
+
+var _listContact2 = _interopRequireDefault(_listContact);
+
+var _listContact3 = __webpack_require__(81);
+
+var _listContact4 = _interopRequireDefault(_listContact3);
+
+var _contactItem = __webpack_require__(84);
+
+var _contactItem2 = _interopRequireDefault(_contactItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = angular.module('myApp.listContacts', []).config(_listContact2.default).component('listContacts', _listContact4.default).component('contactItem', _contactItem2.default);
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = ['$stateProvider', function ($stateProvider) {
+    'use strict';
+
+    $stateProvider.state({
+        name: 'Contacts',
+        url: '/contacts',
+        component: 'listContacts'
+    });
+}];
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _listContact = __webpack_require__(82);
+
+var _listContact2 = _interopRequireDefault(_listContact);
+
+var _listContactComponent = __webpack_require__(83);
+
+var _listContactComponent2 = _interopRequireDefault(_listContactComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var ListContacts = {
+    controller: _listContact2.default,
+    templateUrl: 'listContacts/listContact.component.html'
+};
+
+exports.default = ListContacts;
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ListContactController = function () {
+    function ListContactController(ContactService) {
+        _classCallCheck(this, ListContactController);
+
+        this.ContactService = ContactService;
+    }
+
+    _createClass(ListContactController, [{
+        key: '$onInit',
+        value: function $onInit() {
+            this.contacts = this.ContactService.getContacts();
+        }
+    }, {
+        key: 'deleteItem',
+        value: function deleteItem(object) {
+            this.ContactService.deleteContact(object._id);
+        }
+    }]);
+
+    return ListContactController;
+}();
+
+ListContactController.$inject = ['ContactService'];
+
+exports.default = ListContactController;
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+module.exports = "<contact-item ng-repeat=\"currentContact in $ctrl.contacts\" contact=currentContact delete-item=$ctrl.deleteItem(currentContact)> </contact-item> <hello-world></hello-world>";
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _contactItemTemplate = __webpack_require__(85);
+
+var _contactItemTemplate2 = _interopRequireDefault(_contactItemTemplate);
+
+var _contactItem = __webpack_require__(86);
+
+var _contactItem2 = _interopRequireDefault(_contactItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var contactItem = {
+    templateUrl: 'listContacts/contactItem/contactItem.template.html',
+    bindings: {
+        contact: '<',
+        deleteItem: '&'
+    },
+    controller: _contactItem2.default
+};
+
+exports.default = contactItem;
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=media style=padding:10px> <img class=\"d-flex align-self-start mr-3\" width=90 height=90 src=http://www.corporalmente.com.br/wp-content/uploads/2013/10/profile_avatar_default.png alt=\"Generic placeholder image\"> <div class=media-body> <h4 class=media-heading> {{$ctrl.contact.name}}</h4> {{$ctrl.contact.address}} <div class=info> <a ui-sref=\"EditContact({id: $ctrl.contact._id})\">✔ EDIT</a> <a ng-click=$ctrl.deleteItem($ctrl.contact);>✖ DELETE</a> </div> </div> </div>";
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ContactItemController = function () {
+    function ContactItemController() {
+        _classCallCheck(this, ContactItemController);
+    }
+
+    _createClass(ContactItemController, [{
+        key: "deleteContact",
+        value: function deleteContact(_passedContact) {
+            this.deleteItem(_passedContact);
+        }
+    }]);
+
+    return ContactItemController;
+}();
+
+exports.default = ContactItemController;
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _serviceContacts = __webpack_require__(88);
+
+var _serviceContacts2 = _interopRequireDefault(_serviceContacts);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = angular.module('myApp.serviceContacts', []).service('ContactService', _serviceContacts2.default);
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ContactService = function () {
+    function ContactService() {
+        _classCallCheck(this, ContactService);
+
+        this.contacts = [{ _id: 1, name: 'Allan Benjamin', address: 'St. Claire Avenue, Nº 101', phone: '557188339933' }, { _id: 2, name: 'Georgia Smith', address: 'St. Claire Avenue, Nº 102', phone: '557188339933' }, { _id: 3, name: 'Gregory Levinsky', address: 'St. Claire Avenue, Nº 103', phone: '557188339933' }, { _id: 4, name: 'Jackeline Macfly', address: 'St. Claire Avenue, Nº 104', phone: '557188339933' }, { _id: 5, name: 'Joseph Climber', address: 'St. Claire Avenue, Nº 105', phone: '557188339933' }, { _id: 6, name: 'Joshua Jackson', address: 'St. Claire Avenue, Nº 106', phone: '557188339933' }];
+    }
+
+    _createClass(ContactService, [{
+        key: 'getContacts',
+        value: function getContacts() {
+            return this.contacts;
+        }
+    }, {
+        key: 'addContact',
+        value: function addContact(contactObject) {
+            this.contacts.push(contactObject);
+        }
+    }, {
+        key: 'updateContact',
+        value: function updateContact(item) {
+            this.contacts = this.contacts.map(function (element) {
+                if (element._id === item._id) {
+                    element = item;
+                }
+                return element;
+            });
+        }
+    }, {
+        key: 'deleteContact',
+        value: function deleteContact(index) {
+            var _id = this.contacts.filter(function (element, pos) {
+                if (element._id === index) {
+                    element.pos = pos;
+                    return element;
+                }
+            });
+
+            if (_id.length > 0) {
+                var item = this.contacts.splice(_id[0].pos, 1);
+                if (_typeof(item[0]) === 'object') {
+                    return item[0];
+                }
+            }
+            return false;
+        }
+    }]);
+
+    return ContactService;
+}();
+
+exports.default = ContactService;
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _header = __webpack_require__(90);
+
+var _header2 = _interopRequireDefault(_header);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+angular.module('myApp.header', []).component('appHeader', _header2.default);
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _headerComponent = __webpack_require__(91);
+
+var _headerComponent2 = _interopRequireDefault(_headerComponent);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var AppHeader = {
+    template: _headerComponent2.default
+};
+
+exports.default = AppHeader;
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top\"> <button class=\"navbar-toggler navbar-toggler-right\" type=button data-toggle=collapse data-target=#navbarsExampleDefault aria-controls=navbarsExampleDefault aria-expanded=false aria-label=\"Toggle navigation\"> <span class=navbar-toggler-icon></span> </button> <a class=navbar-brand href=/ >Angular CRUD</a> <div class=\"collapse navbar-collapse\" id=navbarsExampleDefault> <ul class=\"navbar-nav mr-auto\"> <li class=nav-item> <a class=nav-link ui-sref=AddContact>Add Contact</a> </li> <li class=nav-item> <a class=nav-link ui-sref=Contacts>View Contacts</a> </li> </ul> </div> </nav>";
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -99798,6 +100380,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var platform_browser_1 = __webpack_require__(26);
 var static_1 = __webpack_require__(46);
+var helloWorld_component_1 = __webpack_require__(93);
 var core_1 = __webpack_require__(1);
 var AppModule = /** @class */ (function () {
     function AppModule(upgrade) {
@@ -99808,7 +100391,7 @@ var AppModule = /** @class */ (function () {
     };
     AppModule = __decorate([
         core_1.NgModule({
-            declarations: [],
+            declarations: [helloWorld_component_1.HelloWorldComponent],
             imports: [
                 platform_browser_1.BrowserModule,
                 static_1.UpgradeModule
@@ -99820,6 +100403,34 @@ var AppModule = /** @class */ (function () {
     return AppModule;
 }());
 exports.AppModule = AppModule;
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(1);
+var HelloWorldComponent = /** @class */ (function () {
+    function HelloWorldComponent() {
+    }
+    HelloWorldComponent = __decorate([
+        core_1.Component({
+            selector: 'hello-world',
+            template: '<h1>Hello World from Angular! </h1>'
+        })
+    ], HelloWorldComponent);
+    return HelloWorldComponent;
+}());
+exports.HelloWorldComponent = HelloWorldComponent;
 
 
 /***/ })

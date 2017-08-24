@@ -1,5 +1,7 @@
+import HeaderTemplate from "./header.component.html";
+
 let AppHeader = {
-    templateUrl: 'header/header.component.html'
+    template: HeaderTemplate
 };
 
 export default AppHeader;
