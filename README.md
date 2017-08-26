@@ -3,7 +3,7 @@ Simple UI-Router example using route to both AngularJS components (and/or templa
 Components used :
 <ul>
 <li>@angular/upgrade/static, which is what the Angular team actively supports for hybrid mode </li>
-<li>@uirouter/angular-hybrid version 3.0.0 because will support only UpgradeModule, for UpgradeAdapter should use @uirouter/angular-hybrid (More documentation <a href="https://github.com/ui-router/angular-hybrid">here</a></li>
+<li>@uirouter/angular-hybrid version 3.0.0 because will support only UpgradeModule, for UpgradeAdapter should use @uirouter/angular-hybrid (More documentation <a href="https://github.com/ui-router/angular-hybrid">here</a>) </li>
 </ul>
 
 Framework versions :
