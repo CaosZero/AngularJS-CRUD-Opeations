@@ -2,7 +2,7 @@
   "name": "angular-crud",
   "private": true,
   "version": "1.0.0",
-  "repository": "https://github.com/CaosZero/Angularjs.git",
+  "repository": "https://github.com/CaosZero/Angularjs-Hybrid.git",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.7.7",
