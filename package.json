@@ -21,10 +21,9 @@
     "reflect-metadata": "^0.1.10"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --profile --colors --display-error-details --display-cached",
     "start": "http-server -a localhost -p 8000 -c-1",
-    "serve": "http-server -a localhost -p 8000 -c-1",
-    "FIXFIX": "webpack --progress --profile --colors --display-error-details --display-cached"
+    "postbuild": "npm run start"
   },
   "dependencies": {
     "@angular/common": "^4.0.0",

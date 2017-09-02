@@ -10,6 +10,7 @@ export default class AddContactsController {
     }
 
     addContact() {
+        this.newContact._id = Math.random();
         this.ContactService.addContact(this.newContact);
         this.$location.path('/');
     }
