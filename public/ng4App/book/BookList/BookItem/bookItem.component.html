@@ -1,0 +1,14 @@
+<li class="media" uiSref="BookDetail"
+    [uiParams]="{ISBN: Book.isbn}">
+
+    <img class="d-flex mr-3 img-thumbnail"
+         height="150"
+         width="150"
+         [src]="Book.Image"
+         alt="Generic placeholder image">
+    <div class="media-body">
+        <h5 class="mt-0 mb-1">{{Book.Name}}</h5>
+        {{Book.Description}}
+    </div>
+
+</li>

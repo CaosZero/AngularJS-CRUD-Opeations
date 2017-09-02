@@ -1,0 +1,8 @@
+<div class="col-sm-6">
+    <ul class="list-unstyled">
+        <book-item *ngFor="let currentBook of books"
+                   [Book]="currentBook"></book-item>
+    </ul>
+</div>
+
+<ui-view></ui-view>
