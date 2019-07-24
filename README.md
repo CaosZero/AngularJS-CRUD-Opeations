@@ -19,7 +19,7 @@ Framework versions :
 The hybrid application is bootstrap inside <b>app.main.ts</b> and at bootstrap time the default state will be ContactsList Component, is defined inside <b>app.contacts.ts</b>. 
 Structure Files: 
 
-<i>AngularJS Module </i>is declared inside<b>app.contacts.ts</b>. 
+<i>AngularJS Module </i>is declared inside <b>app.contacts.ts</b>. 
 Feature is broken by module, trying to follow the Sacrificial Architecture (described <a href="https://medium.com/@TheStrazz86/sacrificial-architecture-in-web-development-3926c0593fc8">here</a>).
 So there are module for: 
 <ul>
