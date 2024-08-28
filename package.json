@@ -17,7 +17,7 @@
     "style-loader": "^0.13.1",
     "ts-loader": "2.3.3",
     "typescript": "^2.4.2",
-    "webpack": "3.5.5",
+    "webpack": "5.94.0",
     "reflect-metadata": "^0.1.10"
   },
   "scripts": {
